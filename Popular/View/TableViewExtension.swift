@@ -18,17 +18,40 @@ extension Home: UITableViewDelegate, UITableViewDataSource {
         
         let cellVM = viewModel.getCellViewModel( at: indexPath )
         cell.celebrityViewModel = cellVM
-        print("cell created")
+        print("\(cellVM.Name)")
         return cell
+        
+        
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == viewModel.numberOfCells - 1
+        {
+            
+            let customView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
+            customView.backgroundColor = UIColor.clear
+            let activityIndicator  = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+            activityIndicator.color = .darkGray
+            activityIndicator.startAnimating()
+            customView.addSubview(activityIndicator)
+            activityIndicator.center = customView.center
+            tableView.tableFooterView = customView
+            
+            
+            let lastindexpath = IndexPath(item: (indexPath.row) , section: 0)
+            tableView.scrollToRow(at: lastindexpath , at: .none, animated: false)
+           
+            viewModel.Page += 1
+            viewModel.initFetch()
+            //self.LastIndexpathForCell = indexPath
+        }
+    }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150.0
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfCells

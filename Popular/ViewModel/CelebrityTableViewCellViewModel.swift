@@ -18,9 +18,7 @@ class CelebrityTableViewCellViewModel: UITableViewCell {
     var celebrityViewModel : CelebrityCellViewModel? {
         didSet {
             nameLabel.text = celebrityViewModel?.Name
-            KnownAs.text = celebrityViewModel?.KnownAs
-            dateLabel.text = celebrityViewModel?.Bd
-            Bio.text = celebrityViewModel?.Bio
+            KnownAs.text = celebrityViewModel?.KnownFor
 
         }
     }

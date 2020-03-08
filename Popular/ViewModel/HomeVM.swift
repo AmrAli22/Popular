@@ -32,6 +32,9 @@ class HomeViewModel {
         }
     }
     
+    var Page : Int = 1
+    
+    
     var numberOfCells: Int {
         return cellViewModels.count
     }
@@ -47,8 +50,9 @@ class HomeViewModel {
     }
     
     func initFetch() {
-        state = .initalize
-        apiService.fetchPopularCelebritries { [weak self] (success, celebrities, error) in
+        if Page == 1 {
+            state = .initalize }
+        apiService.fetchPopularCelebritries(pageNum: Page) { [weak self] (success, celebrities, error) in
             guard let self = self else {
                 return
             }
@@ -58,33 +62,27 @@ class HomeViewModel {
                 return
             }
             self.processFetchedCelebrities(celebrities: celebrities)
-                self.state = .populated
+            self.state = .populated
             self.RelodtableView?()
-            print("state is populated")
+
         }
     }
     
     func getCellViewModel( at indexPath: IndexPath ) -> CelebrityCellViewModel {
-        print("called")
         return cellViewModels[indexPath.row]
     }
     
     func createCellViewModel( Celebrity : CelebrityCell ) -> CelebrityCellViewModel {
         
-        return CelebrityCellViewModel(
-              Name: Celebrity.name
-            , KnownAs: Celebrity.knownFor.first!.originalName ?? ""
-            , Bd: Celebrity.name
-            , Bio: Celebrity.profilePath ?? "")
+        return CelebrityCellViewModel(Name: Celebrity.name , KnownFor: Celebrity.knownForDepartment)
     }
     
     private func processFetchedCelebrities( celebrities : [CelebrityCell] ) {
         var vmc = [CelebrityCellViewModel]()
         for celebri in celebrities {
             vmc.append( createCellViewModel(Celebrity: celebri) )
-            print(vmc)
         }
-        self.cellViewModels = vmc
+        self.cellViewModels.append(contentsOf: vmc)
     }
 }
 

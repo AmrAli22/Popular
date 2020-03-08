@@ -21,7 +21,7 @@ struct Result: Codable {
 // MARK: - Result
 struct CelebrityCell: Codable {
     let popularity: Double
-    let knownForDepartment: KnownForDepartment
+    let knownForDepartment: String
     let name: String
     let id: Int
     let profilePath: String?
@@ -84,10 +84,7 @@ enum MediaType: String, Codable {
     case tv = "tv"
 }
 
-enum KnownForDepartment: String, Codable {
-    case acting = "Acting"
-    case directing = "Directing"
-}
+
 
 
 

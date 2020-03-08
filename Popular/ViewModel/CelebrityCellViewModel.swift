@@ -11,7 +11,5 @@ import Foundation
 
 struct CelebrityCellViewModel {
     let Name: String
-    let KnownAs: String
-    let Bd: String
-    let Bio: String
+    let KnownFor: String
 }

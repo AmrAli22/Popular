@@ -11,12 +11,12 @@ enum APIError: String, Error {
 }
 
 protocol APIServiceProtocol {
-    func fetchPopularCelebritries( complete: @escaping ( _ success: Bool, _ photos: [CelebrityCell], _ error: APIError? )->() )
+    func fetchPopularCelebritries(  pageNum : Int ,complete: @escaping ( _ success: Bool, _ photos: [CelebrityCell], _ error: APIError? )->() )
 }
 
 class APIService: APIServiceProtocol {
-    func fetchPopularCelebritries( complete: @escaping ( _ success: Bool, _ photos: [CelebrityCell], _ error: APIError?)->()) {
-        Alamofire.request(FetchPopular!, method: .get, parameters: nil).responseJSON { (response) in
+    func fetchPopularCelebritries( pageNum : Int ,complete: @escaping ( _ success: Bool, _ photos: [CelebrityCell], _ error: APIError?)->()) {
+        Alamofire.request(FetchPopular(page: pageNum )!, method: .get, parameters: nil).responseJSON { (response) in
             
             switch response.result{
             case .success(_):

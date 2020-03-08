@@ -57,11 +57,15 @@ class Home: UIViewController {
                     }
                     switch self.viewModel.state {
                     case .error:
+                        if self.viewModel.numberOfCells == 0{
                         self.ActivityIndicator.stopAnimating()
+                        self.ActivityIndicator.isHidden = true
+                        self.showAlert("Network Error")
                         UIView.animate(withDuration: 0.2, animations: {
                             self.tableView.alpha = 0.0
                             print("error")
                         })
+                        }
                     case .initalize:
                         self.ActivityIndicator.startAnimating()
                         UIView.animate(withDuration: 0.2, animations: {
@@ -69,6 +73,7 @@ class Home: UIViewController {
                             print("intilize")
                         })
                     case .populated:
+                        self.tableView.tableFooterView?.isHidden = true
                         self.ActivityIndicator.stopAnimating()
                         UIView.animate(withDuration: 0.2, animations: {
                             self.tableView.alpha = 1.0

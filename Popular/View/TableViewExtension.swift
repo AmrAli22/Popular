@@ -42,7 +42,20 @@ extension Home: UITableViewDelegate, UITableViewDataSource {
             tableView.scrollToRow(at: lastindexpath , at: .none, animated: false)
            
             viewModel.Page += 1
+            if self.SearchBar.text == "" {
             viewModel.initFetch()
+                print("next for fetch")
+            }else{
+                let lastindexpath = IndexPath(item: (indexPath.row) , section: 0)
+                tableView.scrollToRow(at: lastindexpath , at: .none, animated: false)
+                
+                print("nextforSearch")
+                var TextToSearch = SearchBar.text
+                if SearchBar.text?.contains(" ") ?? true {
+                    TextToSearch = SearchBar.text?.replacingOccurrences(of: " ", with: "%20")
+                }
+                viewModel.initSearch(query: TextToSearch ?? "")
+            }
             //self.LastIndexpathForCell = indexPath
         }
     }

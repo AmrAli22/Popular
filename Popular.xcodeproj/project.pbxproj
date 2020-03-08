@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B9E3F1CB70E3C7847B0F123 /* Pods_Popular.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC7D006E44F471672E8B84D /* Pods_Popular.framework */; };
+		AA9518E424158EE0003F108C /* SearchBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9518E324158EE0003F108C /* SearchBarExtension.swift */; };
 		AAAE38FE241442EE00A92FAF /* CelebrityInTblViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE38FD241442EE00A92FAF /* CelebrityInTblViewModel.swift */; };
 		AAAE39012414434F00A92FAF /* CelebrityTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE38FF2414434F00A92FAF /* CelebrityTableViewCellViewModel.swift */; };
 		AAAE39022414434F00A92FAF /* CelebrityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAE39002414434F00A92FAF /* CelebrityTableViewCell.xib */; };
@@ -28,6 +29,7 @@
 		0DC7D006E44F471672E8B84D /* Pods_Popular.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Popular.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C7E6E7B0B2F69C735860C6B /* Pods-Popular.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Popular.release.xcconfig"; path = "Target Support Files/Pods-Popular/Pods-Popular.release.xcconfig"; sourceTree = "<group>"; };
 		834C1B12BE4BCEA19CFC04D9 /* Pods-Popular.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Popular.debug.xcconfig"; path = "Target Support Files/Pods-Popular/Pods-Popular.debug.xcconfig"; sourceTree = "<group>"; };
+		AA9518E324158EE0003F108C /* SearchBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarExtension.swift; sourceTree = "<group>"; };
 		AAAE38FD241442EE00A92FAF /* CelebrityInTblViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrityInTblViewModel.swift; sourceTree = "<group>"; };
 		AAAE38FF2414434F00A92FAF /* CelebrityTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrityTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		AAAE39002414434F00A92FAF /* CelebrityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CelebrityTableViewCell.xib; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				AAB064B524142F9800164BBF /* Home.swift */,
 				AAAE39032414436B00A92FAF /* CelebrityCell */,
 				AAAE390E2414591100A92FAF /* TableViewExtension.swift */,
+				AA9518E324158EE0003F108C /* SearchBarExtension.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				AAAE390924144DDF00A92FAF /* States.swift in Sources */,
 				AAB064C624142FC000164BBF /* ApiEndPoints.swift in Sources */,
 				AAAE39012414434F00A92FAF /* CelebrityTableViewCellViewModel.swift in Sources */,
+				AA9518E424158EE0003F108C /* SearchBarExtension.swift in Sources */,
 				AAAE39052414461200A92FAF /* ApiCalls.swift in Sources */,
 				AAB064B424142F9800164BBF /* AppDelegate.swift in Sources */,
 				AAAE390F2414591100A92FAF /* TableViewExtension.swift in Sources */,

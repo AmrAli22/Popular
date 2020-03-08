@@ -10,6 +10,7 @@ import UIKit
 
 class Home: UIViewController {
 
+    @IBOutlet weak var SearchBar: UISearchBar!
     @IBOutlet weak var ActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     
@@ -18,7 +19,7 @@ class Home: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        
+        SearchBar.delegate = self
         // Init the static view
         initView()
         
@@ -41,7 +42,6 @@ class Home: UIViewController {
             
             self.navigationItem.title = "Popular"
             
-            tableView.estimatedRowHeight = 150
             tableView.rowHeight = UITableView.automaticDimension
         }
         
@@ -97,7 +97,10 @@ class Home: UIViewController {
             viewModel.initFetch()
             
         }
-        
+    
+    
+    
+    
         func showAlert( _ message: String ) {
             let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
             alert.addAction( UIAlertAction(title: "Ok", style: .cancel, handler: nil))

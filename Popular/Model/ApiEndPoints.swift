@@ -20,3 +20,10 @@ func FetchPopular (page : Int) -> URL? {
 func FetchPersonImages (PersonId : Int) -> String {
     return "https://api.themoviedb.org/3/person/\(PersonId)/images?api_key=\(ApiKey)"
 }
+
+func FetchSearchedPerson (query : String) -> URL? {
+return URL.init(string: "https://api.themoviedb.org/3/search/person?api_key=\(ApiKey)&language=en-US&page=1&query=\(query)")
+
+}
+
+

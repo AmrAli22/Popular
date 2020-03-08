@@ -33,7 +33,7 @@ class HomeViewModel {
     }
     
     var Page : Int = 1
-    
+    var TotalPages :Int = 2
     
     var numberOfCells: Int {
         return cellViewModels.count
@@ -68,6 +68,32 @@ class HomeViewModel {
         }
     }
     
+    func initSearch(query : String){
+        print("pageInSearch = \(Page) with Query = \(query)")
+        print("total\(TotalPages)")
+        if Page > TotalPages{
+            print("EndSearching")
+            return
+        }else{
+        apiService.fetchSearchedCelebritries(pageNum: Page, query: query) { [weak self] (success, Searchedcelebriries, error , ReturnedTotalPages)  in
+            self?.TotalPages = ReturnedTotalPages
+            guard let self = self else {
+                return
+            }
+            
+            guard error == nil else {
+                self.state = .error
+                return
+            }
+            self.processSearchedFetchedCelebrities(SearchedCelebrities: Searchedcelebriries)
+            self.state = .populated
+            self.RelodtableView?()
+
+        }
+    }
+    }
+    
+    
     func getCellViewModel( at indexPath: IndexPath ) -> CelebrityCellViewModel {
         return cellViewModels[indexPath.row]
     }
@@ -77,6 +103,28 @@ class HomeViewModel {
         return CelebrityCellViewModel(Name: Celebrity.name , KnownFor: Celebrity.knownForDepartment)
     }
     
+    private func processSearchedFetchedCelebrities(SearchedCelebrities : [CelebrityCell]){
+        print("in processSearchedFetchedCelebrities")
+        if SearchedCelebrities.isEmpty {
+          print("enoughSearching")
+        }else{
+        var vmc = [CelebrityCellViewModel]()
+            
+        for celebri in SearchedCelebrities {
+//            vmc.filter({ return $0 == celebri })
+            vmc.append( createCellViewModel(Celebrity: celebri) )
+        }
+        if self.Page == 1 {
+            self.cellViewModels = vmc
+        }else{
+           self.cellViewModels.append(contentsOf: vmc)
+        }
+       
+       // self.cellViewModels.append(contentsOf: vmc)
+        }
+    }
+    
+    
     private func processFetchedCelebrities( celebrities : [CelebrityCell] ) {
         var vmc = [CelebrityCellViewModel]()
         for celebri in celebrities {
@@ -84,5 +132,6 @@ class HomeViewModel {
         }
         self.cellViewModels.append(contentsOf: vmc)
     }
+    
 }
 

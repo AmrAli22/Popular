@@ -28,6 +28,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MJ7-JO-jCj">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="MsJ-zC-MDw">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="BBV-au-PTb"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Vjc-tf-9Ci"/>
@@ -47,6 +52,7 @@
                     </view>
                     <connections>
                         <outlet property="ActivityIndicator" destination="DRJ-q4-bV2" id="s94-xe-Tl7"/>
+                        <outlet property="SearchBar" destination="MsJ-zC-MDw" id="f2R-Ix-J9V"/>
                         <outlet property="tableView" destination="MJ7-JO-jCj" id="BI9-V6-bMC"/>
                     </connections>
                 </viewController>

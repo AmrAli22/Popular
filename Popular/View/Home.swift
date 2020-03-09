@@ -50,7 +50,6 @@ class Home: UIViewController {
                 guard let self = self else {
                     return
                 }
-                
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else {
                         return
@@ -79,11 +78,8 @@ class Home: UIViewController {
                             self.tableView.alpha = 1.0
                             print("pop")
                         })
-                        
-                        
-                    case .infinteScroll: break
-                        //infintescrollCode
-                        print("code")
+                    case .ReadyForImages:
+                        print("")
                     }
                 }
             }
@@ -93,9 +89,7 @@ class Home: UIViewController {
                     self?.tableView.reloadData()
                 }
             }
-            
             viewModel.initFetch()
-            
         }
     
     

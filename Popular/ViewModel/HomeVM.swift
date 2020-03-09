@@ -10,16 +10,16 @@
 //  MVVMPlayground
 //
 import Foundation
+import UIKit
 
 class HomeViewModel {
     
     let apiService: APIServiceProtocol
     
-    private var Celebrities: [CelebrityCell] = [CelebrityCell]()
+    // var Celebrities: [CelebrityCell] = [CelebrityCell]()
     
     private var cellViewModels: [CelebrityCellViewModel] = [CelebrityCellViewModel]() {
         didSet {
-            print("pop")
             self.populted?()
         }
     }
@@ -28,7 +28,6 @@ class HomeViewModel {
     var state: State = .initalize {
         didSet {
             self.updateLoadingStatus?()
-
         }
     }
     
@@ -68,6 +67,7 @@ class HomeViewModel {
         }
     }
     
+    
     func initSearch(query : String){
         print("pageInSearch = \(Page) with Query = \(query)")
         print("total\(TotalPages)")
@@ -100,7 +100,7 @@ class HomeViewModel {
     
     func createCellViewModel( Celebrity : CelebrityCell ) -> CelebrityCellViewModel {
         
-        return CelebrityCellViewModel(Name: Celebrity.name , KnownFor: Celebrity.knownForDepartment)
+        return CelebrityCellViewModel(Name: Celebrity.name , KnownFor: Celebrity.knownForDepartment, id: Celebrity.id)
     }
     
     private func processSearchedFetchedCelebrities(SearchedCelebrities : [CelebrityCell]){
@@ -128,7 +128,7 @@ class HomeViewModel {
     private func processFetchedCelebrities( celebrities : [CelebrityCell] ) {
         var vmc = [CelebrityCellViewModel]()
         for celebri in celebrities {
-            vmc.append( createCellViewModel(Celebrity: celebri) )
+            vmc.append(createCellViewModel(Celebrity: celebri) )
         }
         self.cellViewModels.append(contentsOf: vmc)
     }

@@ -37,7 +37,6 @@ extension Home: UITableViewDelegate, UITableViewDataSource {
             activityIndicator.center = customView.center
             tableView.tableFooterView = customView
             
-            
             let lastindexpath = IndexPath(item: (indexPath.row) , section: 0)
             tableView.scrollToRow(at: lastindexpath , at: .none, animated: false)
            
@@ -56,7 +55,6 @@ extension Home: UITableViewDelegate, UITableViewDataSource {
                 }
                 viewModel.initSearch(query: TextToSearch ?? "")
             }
-            //self.LastIndexpathForCell = indexPath
         }
     }
     
@@ -68,6 +66,15 @@ extension Home: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfCells
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+   
+        let fullDetails = UIStoryboard(name: "CelebrityDetailsStoryboard", bundle: nil)
+        let FullDetailsVC = fullDetails.instantiateViewController(withIdentifier: "FullDetailsVC") as! FullDetailsViewController
+        FullDetailsVC.PassedCelebrityId = self.viewModel.getCellViewModel(at: indexPath).id
+            present(FullDetailsVC, animated: true , completion: nil)
+        
     }
     
 }

@@ -26,4 +26,11 @@ return URL.init(string: "https://api.themoviedb.org/3/search/person?api_key=\(Ap
 
 }
 
+func FetchFullPerson (id : Int) -> URL? {
+    return URL.init(string: "https://api.themoviedb.org/3/person/\(id)?api_key=\(ApiKey)&language=en-US")
+}
+func GetImagesUrls (id : Int) -> URL?{
+    return URL.init(string: "https://api.themoviedb.org/3/person/\(id)/images?api_key=\(ApiKey)")
+}
+
 

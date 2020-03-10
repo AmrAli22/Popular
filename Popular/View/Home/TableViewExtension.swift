@@ -74,7 +74,7 @@ extension Home: UITableViewDelegate, UITableViewDataSource {
         let FullDetailsVC = fullDetails.instantiateViewController(withIdentifier: "FullDetailsVC") as! FullDetailsViewController
         FullDetailsVC.PassedCelebrityId = self.viewModel.getCellViewModel(at: indexPath).id
             present(FullDetailsVC, animated: true , completion: nil)
-        
+         
     }
     
 }

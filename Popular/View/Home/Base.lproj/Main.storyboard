@@ -54,10 +54,20 @@
                         <outlet property="ActivityIndicator" destination="DRJ-q4-bV2" id="s94-xe-Tl7"/>
                         <outlet property="SearchBar" destination="MsJ-zC-MDw" id="f2R-Ix-J9V"/>
                         <outlet property="tableView" destination="MJ7-JO-jCj" id="BI9-V6-bMC"/>
+                        <segue destination="f3e-V9-wRL" kind="show" identifier="goToDetails" id="6gY-9q-2rY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="339" y="247"/>
+        </scene>
+        <!--CelebrityDetailsStoryboard-->
+        <scene sceneID="dmM-AH-Os9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CelebrityDetailsStoryboard" id="f3e-V9-wRL" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hud-p5-BjP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1062" y="220"/>
         </scene>
     </scenes>
 </document>

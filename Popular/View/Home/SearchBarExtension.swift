@@ -10,7 +10,6 @@ import UIKit
 extension Home : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.viewModel.Page = 1
-        print("textchanged")
         var TextToSearch = searchText
         if searchBar.text == "" {
             self.initVM()
@@ -21,5 +20,7 @@ extension Home : UISearchBarDelegate {
         viewModel.initSearch(query: TextToSearch)
         }
     }
-    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.initVM()
+    }
 }

@@ -18,7 +18,9 @@ class FullDetailsViewController: UIViewController {
     @IBOutlet weak var CollectionView: UICollectionView!
     
     var PassedCelebrityId = Int()
+    var SelectedImageIndex = IndexPath()
 
+    
     var celebrityDetails : FullCelebrity? {
         didSet {
             self.LblName.text = celebrityDetails?.name
@@ -47,6 +49,11 @@ class FullDetailsViewController: UIViewController {
         
     
     }
+    
+    @objc func receivingId(sender: NSNotification){
+        self.PassedCelebrityId = sender.userInfo!["ID"] as! Int
+    }
+    
     @IBAction func Back(_ sender: Any) {
         let Home = UIStoryboard(name: "Main", bundle: nil)
         let HomeVC = Home.instantiateViewController(withIdentifier: "Home") as! Home
@@ -71,6 +78,15 @@ class FullDetailsViewController: UIViewController {
         
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any? ) {
+        if (segue.identifier == "ToFullImage") {
+        if let FullView = segue.destination as? FullImageViewController {
+            print(viewModel.CelebrityImages[SelectedImageIndex.row])
+            FullView.image = viewModel.CelebrityImages[SelectedImageIndex.row]
+            }
+        }
+    }
+    
    func initFetchDetails(){
     ////
     viewModel.updateLoadingStatus = { [weak self] () in

@@ -16,9 +16,9 @@ class HomeViewModel {
     
     let apiService: APIServiceProtocol
     
-    // var Celebrities: [CelebrityCell] = [CelebrityCell]()
     
-    private var cellViewModels: [CelebrityCellViewModel] = [CelebrityCellViewModel]() {
+    
+ var cellViewModels: [CelebrityCellViewModel] = [CelebrityCellViewModel]() {
         didSet {
             self.populted?()
         }
@@ -69,10 +69,7 @@ class HomeViewModel {
     
     
     func initSearch(query : String){
-        print("pageInSearch = \(Page) with Query = \(query)")
-        print("total\(TotalPages)")
         if Page > TotalPages{
-            print("EndSearching")
             return
         }else{
         apiService.fetchSearchedCelebritries(pageNum: Page, query: query) { [weak self] (success, Searchedcelebriries, error , ReturnedTotalPages)  in
@@ -111,7 +108,6 @@ class HomeViewModel {
         var vmc = [CelebrityCellViewModel]()
             
         for celebri in SearchedCelebrities {
-//            vmc.filter({ return $0 == celebri })
             vmc.append( createCellViewModel(Celebrity: celebri) )
         }
         if self.Page == 1 {
@@ -119,8 +115,6 @@ class HomeViewModel {
         }else{
            self.cellViewModels.append(contentsOf: vmc)
         }
-       
-       // self.cellViewModels.append(contentsOf: vmc)
         }
     }
     

@@ -37,4 +37,9 @@ extension FullDetailsViewController:UICollectionViewDelegate , UICollectionViewD
     }
     
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.SelectedImageIndex = indexPath
+        performSegue(withIdentifier: "ToFullImage", sender: self)
+        
+    }
 }
